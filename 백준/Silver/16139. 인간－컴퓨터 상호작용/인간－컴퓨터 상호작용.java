@@ -1,16 +1,17 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Scanner;
 
 public class Main {
-	static Scanner scanner = new Scanner(System.in);
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	
 	public static void main(String[] args) throws IOException {
-		String str = scanner.next();
-		int q = scanner.nextInt();
-		int[][] prefixSum = new int[26][str.length()];		
+		String str = br.readLine();
+		int q = Integer.parseInt(br.readLine());
+		int[][] prefixSum = new int[26][str.length()];	
 		
 		for(int i = 0; i < str.length(); i++) {
 			for(int j = 0; j < 26; j++) {
@@ -23,9 +24,10 @@ public class Main {
 		}
 		
 		for(int i = 0; i < q; i++) {
-			String alphabet = scanner.next();
-			int l = scanner.nextInt();
-			int r = scanner.nextInt();			
+			String[] oneCase = br.readLine().split(" " );
+			String alphabet = oneCase[0];
+			int l = Integer.parseInt(oneCase[1]);
+			int r = Integer.parseInt(oneCase[2]);
 			
 			if(l == 0) {
 				bw.write(prefixSum[alphabet.charAt(0) - 97][r] + "\n");
